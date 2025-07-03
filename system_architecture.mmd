@@ -1,0 +1,36 @@
+graph TD
+  subgraph Client
+    A1["User / Test Scripts (testapi.py, testmerging.py)"]
+  end
+
+  subgraph API
+    B1["FastAPI Server (main.py)"]
+    B2["Background Tasks (FastAPI)"]
+  end
+
+  subgraph Services
+    C1["MongoDB Service (mongo_service.py)"]
+    C2["AI Service (ai_service.py)"]
+  end
+
+  subgraph Utils
+    D1["Data Handling (data_handling.py)"]
+    D2["Data Models (data_models.py)"]
+    D3["Segmentation Prompt (segmentation_prompt.py)"]
+  end
+
+  subgraph Database
+    E1["MongoDB (Docker)"]
+    E2["Collections: raw_data, user_profiles, cohort_data"]
+  end
+
+  A1 -->|HTTP Requests| B1
+  B1 -->|Ingest/Query| C1
+  B1 -->|Background Processing| B2
+  B2 --> D1
+  D1 -->|Profile Merge/Segmentation| C1
+  D1 -->|Segmentation| C2
+  C2 -->|Cohort Assignment| D3
+  D1 --> D2
+  C1 -->|CRUD| E1
+  E1 --> E2 
