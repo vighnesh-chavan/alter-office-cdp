@@ -76,7 +76,7 @@ def test_get_user_by_cookie():
 
 
 def test_get_users_by_cohort():
-    params_cohort = {"cohort": "Music", "limit": 5, "offset": 0}
+    params_cohort = {"cohort": "travel", "limit": 5, "offset": 0}
     response = requests.get(f"{BASE_URL}/cohort/users", params=params_cohort)
     print(
         "Get Users by Cohort Response:",

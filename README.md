@@ -148,7 +148,7 @@ OPENAI_API_KEY=your_openai_api_key
 ### 4. Start MongoDB (via Docker Compose)
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### 5. Run the API Server
